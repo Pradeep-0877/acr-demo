@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: pradeepacrdemo 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pradeepacrdemo
+  template:
+    metadata:
+      labels:
+        app: pradeepacrdemo 
+    spec:
+      containers:
+        - name: pradeepacrdemo 
+          image: acr0877.azurecr.io/pradeepacrdemo
+          ports:
+          - containerPort: 80
