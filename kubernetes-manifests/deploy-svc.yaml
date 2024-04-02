@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: acr-image-dply
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grenn
+  template:
+    metadata:
+      labels:
+        app: green
+    spec:
+      containers:
+        - image: acr0877.azurecr.io/pradeepacrdemo:green
+          name: app1-nginx
+          ports:
+           - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-svc
+spec:
+  selector:
+    app: green
+  type: LoadBalancer
+  ports:
+    - targetPort: 80
+      port: 80
+      
