@@ -29,7 +29,7 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      vmImage: $(vmImageName)
+      default
     steps:
     - task: Docker@2
       displayName: Build and push an image to container registry
@@ -51,8 +51,8 @@ stages:
   jobs:
   - deployment: Deploy
     displayName: Deploy
-    pool:
-      vmImage: $(vmImageName)
+    pool: default
+      # vmImage: $(vmImageName)
     environment: 'Pradeep0877acrdemo.default'
     strategy:
       runOnce:
